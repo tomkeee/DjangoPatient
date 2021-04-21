@@ -1,0 +1,6 @@
+{%extends 'base.html'%}
+{%block content%}
+{%for instance in content%}
+<h4 class="ok">{{instance.id}} - {{instance.first_name}} {{instance.last_name}} <a href="{{instance.get_absolute_url}}" >More</a></h4>
+{%endfor%}
+{%endblock%}

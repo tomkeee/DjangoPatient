@@ -1,0 +1,13 @@
+{%extends 'base.html'%}
+{%block title%}Add Patient{%endblock%}
+{%block intro%}Add a new patient{%endblock%}
+{%block content%}
+<form  method="POST" class="form-group"> {%csrf_token%}
+    <div class= "form-group">
+    {{form}}
+          <div class="form-check">
+          </div>
+        <button type="submit" class="btn btn-primary">Add</button>
+        </div>
+      </form>
+{%endblock%}
