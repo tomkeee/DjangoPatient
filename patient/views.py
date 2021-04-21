@@ -1,16 +1,21 @@
 from django.shortcuts import render,redirect,get_object_or_404,reverse
-from django.http import Http404
+from django.http import Http404,HttpResponseRedirect
 
 from .models import Patient
 from .forms import PatientForm
 
 # Create your views here.
 def patient_create_view(request):
-    form=PatientForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-        form=PatientForm()
-    form=PatientForm()
+    if request.method=="POST":
+        form=PatientForm(request.POST or None)
+   
+        if form.is_valid():
+            form.save()
+            form=PatientForm()
+        return HttpResponseRedirect("/patient")
+        
+    else:
+       form=PatientForm()
     context={
         "form":form
     }
